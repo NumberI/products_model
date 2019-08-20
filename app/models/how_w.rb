@@ -1,0 +1,2 @@
+class HowW < ApplicationRecord
+end
