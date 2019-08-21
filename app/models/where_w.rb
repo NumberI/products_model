@@ -11,4 +11,5 @@
 #
 
 class WhereW < ApplicationRecord
+	belongs_to: product
 end

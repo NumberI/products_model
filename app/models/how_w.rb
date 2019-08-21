@@ -9,4 +9,5 @@
 #
 
 class HowW < ApplicationRecord
+	belongs_to: product
 end
