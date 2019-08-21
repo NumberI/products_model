@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_152153) do
+ActiveRecord::Schema.define(version: 2019_08_21_152102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_08_20_152153) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_users_on_product_id"
   end
 
   create_table "where_ws", force: :cascade do |t|
@@ -50,6 +52,10 @@ ActiveRecord::Schema.define(version: 2019_08_20_152153) do
     t.string "os"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_where_ws_on_product_id"
   end
 
+  add_foreign_key "users", "products"
+  add_foreign_key "where_ws", "products"
 end

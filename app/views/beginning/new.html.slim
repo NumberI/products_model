@@ -1,0 +1,8 @@
+<h1>Beginning#new</h1>
+= form_with(model: @product) do |form|
+	= form.fields_for :users do |n_form|
+		= n_form.label :fullname
+		br
+		= n_form.text_field :fullname
+		br
+		= n_form.text_field :full
