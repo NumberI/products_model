@@ -8,8 +8,9 @@
 #  role       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  product_id :bigint
 #
 
 class User < ApplicationRecord
-	belongs_to :product
+	
 end

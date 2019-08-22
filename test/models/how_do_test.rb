@@ -1,16 +1,17 @@
 # == Schema Information
 #
-# Table name: where_ws
+# Table name: how_dos
 #
 #  id         :bigint           not null, primary key
-#  domain     :string
-#  type       :string
-#  os         :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  product_id :bigint
 #
 
-class WhereW < ApplicationRecord
-	belongs_to :product
+require 'test_helper'
+
+class HowDoTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
