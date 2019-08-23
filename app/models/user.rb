@@ -12,5 +12,5 @@
 #
 
 class User < ApplicationRecord
-	
+	has_many :products, through: :responces
 end

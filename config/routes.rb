@@ -10,13 +10,9 @@ Rails.application.routes.draw do
   # get 'product/new'
   # get 'product/create'
   resource :products, only: [:new, :create] do
-	resources :users, only: [:new, :create]
-	resources :info, only: [:new, :create]
+  	resources :user, only: [:new, :create, :show]
+  	resources :info, only: [:new, :create]
   end
-  get 'beginning/new'
-  get 'beginning/create'
-  get 'beginning/show'
-  get 'beginning/index'
   get '/' => 'products#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

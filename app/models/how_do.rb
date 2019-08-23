@@ -11,4 +11,5 @@
 class HowDo < ApplicationRecord
 	belongs_to :product
 	has_many :infos, as: :described
+	
 end

@@ -1,0 +1,17 @@
+<h1>User#new</h1>
+<p>Find me in app/views/user/new.html.erb</p>
+= form_with model: @user, url:'/products/user' do |form|
+	= form.label :fullname
+	br
+	= form.text_field :fullname
+	br
+	= form.label :login
+	br
+	= form.text_field :login
+	br
+	= form.label :role
+	br
+	= select("user", "role", ["User","Admin"])
+	br
+	br
+	= form.submit

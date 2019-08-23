@@ -1,9 +1,28 @@
 <h1>Products#new</h1>
 <p>Find me in app/views/products/new.html.erb</p>
 = form_with model: @product do |form|
-	= form.label :name
+	= form.label "Имя"
 	br
 	= form.text_field :name
+	br
+	br
+	= form.collection_select(:info_w, @w, :id, :name, {:prompt => "Пожалуйста выберите несколько инфо-блоков 'как работает'"}, {:multiple => true})
+	br
+	br
+	= form.collection_select(:info_d, @d, :id, :name, {:prompt => "Пожалуйста выберите несколько инфо-блоков 'как пользоваться'"}, {:multiple => true})
+	br
+	br
+	= form.collection_select(:os, ["Windows","MacOS","Android"], :to_s, :to_s, {:prompt => "Пожалуйста выберите несколько ОС, на которых запускается продукт"}, {:multiple => true})
+	br
+	br
+	= form.collection_select(:domain, ["local","ru"], :to_s, :to_s, {:prompt => "Пожалуйста выберите Домен продукта"}, {:multiple => true})
+	br
+	br
+	= form.collection_select(:type, ["Desktop","Tablet","Mobile"], :to_s, :to_s, {:prompt => "Пожалуйста выберите тип устройств, на которых запускается продукт"}, {:multiple => true})
+	br
+	br
+
+	br
 	br
 	= form.submit
 	
