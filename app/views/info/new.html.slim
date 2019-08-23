@@ -1,0 +1,24 @@
+<h1>Info#new</h1>
+<p>Find me in app/views/info/new.html.erb</p>
+= form_with model: @info, url:'/products/info' do |form|
+	= form.label :name
+	br
+	= form.text_field :name
+	br
+	= form.label :description
+	br
+	= form.text_field :description
+	br
+	= form.label :described_type
+	br
+	= select("info", "described_type", ["HowW","HowDo"])
+	br
+	= form.label :picture
+	br
+	= form.text_field :picture
+	br
+	= form.label :ordernumber
+	br
+	= form.text_field :ordernumber
+	br
+	= form.submit
