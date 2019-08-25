@@ -1,5 +1,7 @@
 # == Schema Information
-#
+#Product.first.how_w.create(:described => w)
+# Info.first.update(:described => HowW.first)
+# Product.first.how_w.save
 # Table name: infos
 #
 #  id             :bigint           not null, primary key

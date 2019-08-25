@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # get 'products/create'
   # get 'product/new'
   # get 'product/create'
+  # get '/products/user/:id' => 'user#show'
   resource :products, only: [:new, :create] do
   	resources :user, only: [:new, :create, :show]
   	resources :info, only: [:new, :create]

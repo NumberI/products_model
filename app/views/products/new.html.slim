@@ -6,23 +6,39 @@
 	= form.text_field :name
 	br
 	br
-	= form.collection_select(:info_w, @w, :id, :name, {:prompt => "Пожалуйста выберите несколько инфо-блоков 'как работает'"}, {:multiple => true})
+	= form.label "Пожалуйста выберите несколько инфо-блоков 'как работает'"
+	br
+	= form.collection_select(:info_w, @w, :id, :name, {prompt: false, :include_hidden => false},{:multiple => true})
 	br
 	br
-	= form.collection_select(:info_d, @d, :id, :name, {:prompt => "Пожалуйста выберите несколько инфо-блоков 'как пользоваться'"}, {:multiple => true})
+	= form.label "Пожалуйста выберите несколько инфо-блоков 'как пользоваться'"
+	br
+	= form.collection_select(:info_d, @d, :id, :name, {prompt: false, :include_hidden => false}, {:multiple => true})
 	br
 	br
-	= form.collection_select(:os, ["Windows","MacOS","Android"], :to_s, :to_s, {:prompt => "Пожалуйста выберите несколько ОС, на которых запускается продукт"}, {:multiple => true})
+	= form.label "Пожалуйста выберите несколько ОС, на которых запускается продукт"
+	br
+	= form.collection_select(:os, ["Windows","MacOS","Android"], :to_s, :to_s, {prompt: false, :include_hidden => false}, {:multiple => true})
 	br
 	br
-	= form.collection_select(:domain, ["local","ru"], :to_s, :to_s, {:prompt => "Пожалуйста выберите Домен продукта"}, {:multiple => true})
+	= form.label "Пожалуйста выберите Домен продукта"
+	br
+	= form.collection_select(:domain, ["local","ru"], :to_s, :to_s, {prompt: false, :include_hidden => false}, {:multiple => true})
 	br
 	br
-	= form.collection_select(:type, ["Desktop","Tablet","Mobile"], :to_s, :to_s, {:prompt => "Пожалуйста выберите тип устройств, на которых запускается продукт"}, {:multiple => true})
+	= form.label "Пожалуйста выберите тип устройств, на которых запускается продукт"
+	br
+	= form.collection_select(:type, ["Desktop","Tablet","Mobile"], :to_s, :to_s, {prompt: false, :include_hidden => false}, {:multiple => true})
 	br
 	br
-
+	= form.label "Пожалуйста выберите команду ответственную за продукт"
+	br
+	= form.collection_select(:user, @users, :id, :fullname, {prompt: false, :include_hidden => false}, {:multiple => true})
+	br
+	br
 	br
 	br
 	= form.submit
-	
+	br
+	br
+	= @t.inspect
