@@ -13,4 +13,7 @@
 class User < ApplicationRecord
 	has_many :products, through: :responses
 	has_many :responses
+
+	validates :login, uniqueness: { case_sensitive: false }
+	validates :login, length: { in: 3..20 }
 end

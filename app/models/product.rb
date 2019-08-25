@@ -18,4 +18,6 @@ class Product < ApplicationRecord
 	accepts_nested_attributes_for :how_w
 	accepts_nested_attributes_for :how_do
 	accepts_nested_attributes_for :where_w
+
+	validates :name, uniqueness: { case_sensitive: false }
 end
