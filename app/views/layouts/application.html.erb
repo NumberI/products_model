@@ -13,6 +13,12 @@
     <%= link_to 'Создание нового инфо-блока         ', new_products_info_path %>
     <%= link_to 'Создание нового пользователя         ', new_products_user_path %>
     <%= link_to 'Создание нового продукта         ', new_products_path   %>
+    <p><%= link_to "Sign In", new_role_session_path %> | <%= link_to "Sign Out", destroy_role_session_path, method: :delete %></p>
+    <% if role_signed_in? %>
+      Hello, <%= current_role.email %> | <%= link_to "Sign Out", destroy_role_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Sign In", new_role_session_path %>
+    <% end %>
     <br />
     <%= flash.alert%>
     <%= yield %>
