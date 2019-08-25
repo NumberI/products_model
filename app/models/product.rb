@@ -9,7 +9,8 @@
 #
 
 class Product < ApplicationRecord
-	has_many :users, through: :responces
+	has_many :responses
+	has_many :users, through: :responses
 	has_one :how_do
 	has_one :how_w
 	has_one :where_w

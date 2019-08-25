@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <%= link_to 'Создание нового инфо-блока         ', new_products_info_path %>
+    <%= link_to 'Создание нового пользователя         ', new_products_user_path %>
+    <%= link_to 'Создание нового продукта         ', new_products_path   %>
+    <br />
+    <%= flash.alert%>
     <%= yield %>
   </body>
 </html>

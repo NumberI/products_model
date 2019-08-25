@@ -8,9 +8,9 @@
 #  role       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  product_id :bigint
 #
 
 class User < ApplicationRecord
-	has_many :products, through: :responces
+	has_many :products, through: :responses
+	has_many :responses
 end

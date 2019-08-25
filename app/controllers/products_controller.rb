@@ -1,23 +1,30 @@
 class ProductsController < ApplicationController
+  def show
+    @product = Product.find(params[:id])
+  end
+
   def new
   	@product = Product.new
-    @w = Info.where(:described_type => 'HowW')
-    @d = Info.where(:described_type => 'HowDo')
+    @w = Info.where(:described_type => 'HowW', :described_id => nil)
+    @d = Info.where(:described_type => 'HowDo', :described_id => nil)
+    redirect_to new_products_info_path, :alert => "Не созданы свободные инфоблоки" if @w.empty? or @d.empty? 
     @users = User.all
+    redirect_to new_products_user_path, :alert => "Не созданы пользователи" if @users.empty?
   end
 
   def create
-  	# @product = Product.new(params)
-    @where_w = WhereW.new(:os => product_params[:product][:os][], :domain => product_params[:product][:domain][], :type => product_params[:product][:type][])
-    if @where_w.save
-      # @product = Product.new(name: product_params[:product][:name])
-      # if @product.how_w.save
-      #     redirect_to '/'
-      # else
-      #   render action: 'new'
-      # end
+    @product = Product.new(name: product_params[:name])
+    if @product.save
+      HowW.create(product_id: @product.id)
+      HowDo.create(product_id: @product.id)
+      product_params[:info_w].each {|w| Info.find(w).update(described: @product.how_w)}
+      product_params[:info_d].each {|d| Info.find(d).update(described: @product.how_do)}
+      @where_w = WhereW.new(:os => product_params[:os], :domain => product_params[:domain], :wtype => product_params[:wtype], :product_id => @product.id)
+      @where_w.save
+      product_params[:user].each {|u| @product.users << User.find(u)}
+      redirect_to action: 'show', id: @product.id
     else
-        render action: 'new'
+      render action: 'new'
     end
   end
 	
@@ -25,6 +32,6 @@ class ProductsController < ApplicationController
   private
   
   def product_params
-	 params.require(:product).permit(:name, info_w: [], info_d: [], os: [], domain: [], type: [], user: [])
+	  params.require(:product).permit(:name, info_w: [], info_d: [], os: [], domain: [], wtype: [], user: [])
   end
 end

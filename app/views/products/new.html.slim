@@ -28,7 +28,7 @@
 	br
 	= form.label "Пожалуйста выберите тип устройств, на которых запускается продукт"
 	br
-	= form.collection_select(:type, ["Desktop","Tablet","Mobile"], :to_s, :to_s, {prompt: false, :include_hidden => false}, {:multiple => true})
+	= form.collection_select(:wtype, ["Desktop","Tablet","Mobile"], :to_s, :to_s, {prompt: false, :include_hidden => false}, {:multiple => true})
 	br
 	br
 	= form.label "Пожалуйста выберите команду ответственную за продукт"
