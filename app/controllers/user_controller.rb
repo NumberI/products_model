@@ -12,13 +12,13 @@ class UserController < ApplicationController
 	  	@user = User.new(user_params)
 
 	    if @user.save
-	      redirect_to action: 'show', id: @user.id
+	      redirect_to action: 'show', id: @user.id and return
 	      # redirect_to '/products/info/new'
 	    else
 	      render action: 'new'
 	    end
 	  else
-	  	redirect_to '/', :alert => "Вы не админ!!!" 
+	  	redirect_to '/', :alert => "Вы не админ!!!" and return 
 	  end
   end
   

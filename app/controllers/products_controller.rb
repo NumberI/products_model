@@ -9,9 +9,9 @@ class ProductsController < ApplicationController
   	@product = Product.new
     @w = Info.where(:described_type => 'HowW', :described_id => nil)
     @d = Info.where(:described_type => 'HowDo', :described_id => nil)
-    redirect_to new_products_info_path, :alert => "Не созданы свободные инфоблоки" if @w.empty? or @d.empty? 
+    redirect_to new_products_info_path, :alert => "Не созданы свободные инфоблоки" and return if @w.empty? or @d.empty? 
     @users = User.all
-    redirect_to new_products_user_path, :alert => "Не созданы пользователи" if @users.empty?
+    redirect_to new_products_user_path, :alert => "Не созданы пользователи" and return if @users.empty?
   end
 
   def create
@@ -25,12 +25,12 @@ class ProductsController < ApplicationController
         @where_w = WhereW.new(:os => product_params[:os], :domain => product_params[:domain], :wtype => product_params[:wtype], :product_id => @product.id)
         @where_w.save
         product_params[:user].each {|u| @product.users << User.find(u)}
-        redirect_to action: 'show', id: @product.id
+        redirect_to action: 'show', id: @product.id and return
       else
         render action: 'new'
       end
     else
-      redirect_to '/', :alert => "Вы не админ!!!" 
+      redirect_to '/', :alert => "Вы не админ!!!" and return 
     end
   end
 	

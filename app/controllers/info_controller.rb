@@ -15,12 +15,12 @@ class InfoController < ApplicationController
     	@info = @described.infos.build(info)
 
       if @info.save
-        redirect_to action: 'show', id: @info.id
+        redirect_to action: 'show', id: @info.id and return
       else
         render action: 'new'
       end
     else
-      redirect_to '/', :alert => "Вы не админ!!!"   
+      redirect_to '/', :alert => "Вы не админ!!!" and return   
     end
   end
   
