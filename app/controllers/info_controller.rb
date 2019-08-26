@@ -9,14 +9,18 @@ class InfoController < ApplicationController
   end
 
   def create
-  	info = params.require(:info).permit(:name, :description, :described_type, :picture, :ordernumber)
-  	create_described(info[:described_type])
-  	@info = @described.infos.build(info)
+  	if current_role.admin?
+      info = params.require(:info).permit(:name, :description, :described_type, :picture, :ordernumber)
+    	create_described(info[:described_type])
+    	@info = @described.infos.build(info)
 
-    if @info.save
-      redirect_to action: 'show', id: @info.id
+      if @info.save
+        redirect_to action: 'show', id: @info.id
+      else
+        render action: 'new'
+      end
     else
-      render action: 'new'
+      redirect_to '/', :alert => "Вы не админ!!!"   
     end
   end
   

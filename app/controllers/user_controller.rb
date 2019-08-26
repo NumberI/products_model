@@ -8,14 +8,18 @@ class UserController < ApplicationController
   end
 
   def create
-  	@user = User.new(user_params)
+  	if current_role.admin?
+	  	@user = User.new(user_params)
 
-    if @user.save
-      redirect_to action: 'show', id: @user.id
-      # redirect_to '/products/info/new'
-    else
-      render action: 'new'
-    end
+	    if @user.save
+	      redirect_to action: 'show', id: @user.id
+	      # redirect_to '/products/info/new'
+	    else
+	      render action: 'new'
+	    end
+	  else
+	  	redirect_to '/', :alert => "Вы не админ!!!" 
+	  end
   end
   
   private
