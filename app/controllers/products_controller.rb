@@ -15,8 +15,10 @@ class ProductsController < ApplicationController
   end
 
   def create
-    if current_role.admin?
+     
+    # if current_role.admin?
       @product = Product.new(name: product_params[:name])
+      authorize @product
       if @product.save
         HowW.create(product_id: @product.id)
         HowDo.create(product_id: @product.id)
@@ -29,9 +31,9 @@ class ProductsController < ApplicationController
       else
         render action: 'new'
       end
-    else
-      redirect_to '/', :alert => "Вы не админ!!!" and return 
-    end
+    # else
+    #   redirect_to '/', :alert => "Вы не админ!!!" and return 
+    # end
   end
 	
 
@@ -39,5 +41,9 @@ class ProductsController < ApplicationController
   
   def product_params
 	  params.require(:product).permit(:name, info_w: [], info_d: [], os: [], domain: [], wtype: [], user: [])
+  end
+
+  def pundit_user
+    current_role
   end
 end

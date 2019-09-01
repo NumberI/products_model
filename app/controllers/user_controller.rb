@@ -8,7 +8,7 @@ class UserController < ApplicationController
   end
 
   def create
-  	if current_role.admin?
+  	# if current_role.admin?
 	  	@user = User.new(user_params)
 
 	    if @user.save
@@ -17,9 +17,9 @@ class UserController < ApplicationController
 	    else
 	      render action: 'new'
 	    end
-	  else
-	  	redirect_to '/', :alert => "Вы не админ!!!" and return 
-	  end
+	  # else
+	  # 	redirect_to '/', :alert => "Вы не админ!!!" and return 
+	  # end
   end
   
   private
