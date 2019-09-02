@@ -17,15 +17,15 @@ class ProductsController < ApplicationController
   def create
      
     # if current_role.admin?
-      @product = Product.new(name: product_params[:name])
+      @product = Product.new(name: product_params[:name], how_w_attributes: {}, how_do_attributes: {}, where_w_attributes: {:os => product_params[:os], :domain => product_params[:domain], :wtype => product_params[:wtype]})
       authorize @product
       if @product.save
-        HowW.create(product_id: @product.id)
-        HowDo.create(product_id: @product.id)
+        # HowW.create(product_id: @product.id)
+        # HowDo.create(product_id: @product.id)
         product_params[:info_w].each {|w| Info.find(w).update(described: @product.how_w)}
         product_params[:info_d].each {|d| Info.find(d).update(described: @product.how_do)}
-        @where_w = WhereW.new(:os => product_params[:os], :domain => product_params[:domain], :wtype => product_params[:wtype], :product_id => @product.id)
-        @where_w.save
+        # @where_w = WhereW.new(:os => product_params[:os], :domain => product_params[:domain], :wtype => product_params[:wtype], :product_id => @product.id)
+        # @where_w.save
         product_params[:user].each {|u| @product.users << User.find(u)}
         redirect_to action: 'show', id: @product.id and return
       else

@@ -11,5 +11,7 @@
 class HowW < ApplicationRecord
 	belongs_to :product
 	has_many :infos, as: :described
+
+	accepts_nested_attributes_for :infos
 	
 end
