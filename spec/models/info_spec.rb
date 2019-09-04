@@ -8,10 +8,14 @@ describe Info do
 
   describe "#order" do
     it "check order" do
-      info = create(:info)
+      pr =  create :how_do
+      re = create(:info, described: pr)
 
-      p info.order
-      
+      p re.order
+      pr2 =  create :how_do
+      re2 = create(:info, described: pr2)
+
+      p re2.order
     end
   end
 end
