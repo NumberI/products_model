@@ -18,4 +18,8 @@ class Info < ApplicationRecord
 
 	validates :name, uniqueness: { case_sensitive: false }
 	validates :name, :description, :ordernumber, presence: true
+
+  def order
+    ordernumber
+  end
 end

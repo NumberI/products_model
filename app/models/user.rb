@@ -17,4 +17,8 @@ class User < ApplicationRecord
 	validates :login, uniqueness: { case_sensitive: false }
 	validates :login, length: { in: 3..20 }
 	validates_presence_of :fullname, :login
+
+  def sign
+    login
+  end
 end

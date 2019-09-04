@@ -1,7 +1,20 @@
 require "rails_helper"
 
 describe User do
-  it {should validate_presence_of :fullname}
-  it {should validate_presence_of :login}
-  it {should have_many :products}
+  describe "validations" do
+    it {should validate_presence_of :fullname}
+    it {should validate_presence_of :login}
+  end
+  
+  describe "associations" do
+    it {should have_many :products}
+  end
+
+  describe "#sign" do
+    it "check login" do
+      user = create(:user)
+
+      expect(user.login).to eq "aks11"
+    end
+  end
 end
