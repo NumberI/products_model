@@ -16,5 +16,5 @@ class Product < ApplicationRecord
 	has_one :where_w
 	accepts_nested_attributes_for :users, :how_do, :how_w, :where_w
 
-	validates :name, uniqueness: { case_sensitive: false }
+	validates :name, uniqueness: { case_sensitive: false }, presence: true
 end
