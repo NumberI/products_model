@@ -14,7 +14,7 @@ describe User do
     it "check login" do
       user = create(:user)
 
-      expect(user.login).to eq "aks11"
+      expect(user.login).to eq "aks115"
     end
   end
 end
