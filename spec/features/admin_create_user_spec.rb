@@ -1,11 +1,12 @@
 require "rails_helper"
 
 feature "user creation" do 
-  before(:all) do
-    sign_up_admin  
-  end
+  # before(:all) do
+  #   sign_up_admin  
+  # end
 
   scenario "allows access to page" do
+    sign_up_admin
     click_link 'Sign Out', :match => :first
     visit new_role_session_path
     within(".new_role") do
