@@ -15,6 +15,8 @@
 
 class Info < ApplicationRecord
 	belongs_to :described, polymorphic: true
+  has_many_attached :pictures
+
 
 	validates :name, uniqueness: { case_sensitive: false }
 	validates :name, :description, :ordernumber, presence: true

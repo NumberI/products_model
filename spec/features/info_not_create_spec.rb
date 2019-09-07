@@ -11,7 +11,7 @@ feature "info no creation" do
     fill_in :info_name, :with => 'info_test11111'
     fill_in :info_description, :with => 'info_description1'
     select 'HowW', :from => :info_described_type
-    fill_in :info_picture, :with => '10.jpg'
+    # fill_in :info_picture, :with => '10.jpg'
     fill_in :info_ordernumber, :with => '4'
     click_button 'Create Info'
     expect(page).to have_content("You are not Admin to perform this action.")
