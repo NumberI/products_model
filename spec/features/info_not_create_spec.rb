@@ -14,7 +14,7 @@ feature "info no creation" do
     fill_in :info_picture, :with => '10.jpg'
     fill_in :info_ordernumber, :with => '4'
     click_button 'Create Info'
-    expect(page).to have_content("You are not authorized to perform this action")
+    expect(page).to have_content("You are not Admin to perform this action.")
     # expect(raise_error(RuntimeError)).to eq 4
   end
 end
