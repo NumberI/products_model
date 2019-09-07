@@ -10,12 +10,11 @@ describe Info do
     it "check order" do
       pr =  create :how_do
       re = create(:info, described: pr)
+      expect(re.order).to eq 1
 
-      p re.order
       pr2 =  create :how_do
       re2 = create(:info, described: pr2)
-
-      p re2.order
+      expect(re2.order).to eq 2
     end
   end
 end

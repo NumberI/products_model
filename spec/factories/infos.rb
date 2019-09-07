@@ -8,11 +8,5 @@ FactoryBot.define do
     # ordernumber { 3 }
 
     association :described, factory: :how_do
-    # after(:create) do |info|
-    #   create(:how_do, described: info)
-    # end
-      
-    # described {|a| a.association(:how_ws)}
-    
   end
 end

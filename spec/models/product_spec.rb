@@ -10,7 +10,6 @@ describe Product do
       product = create(:product_with_users)
 
       expect(product.users.last.login).to eq "aks114"
-      p product.users.last.fullname
     end
   end
 end
