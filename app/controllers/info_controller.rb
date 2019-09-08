@@ -10,7 +10,7 @@ class InfoController < ApplicationController
 
   def create
   	# if current_role.admin?
-      info = params.require(:info).permit(:name, :description, :described_type, :pictures, :ordernumber)
+      info = params.require(:info).permit(:name, :description, :described_type, :ordernumber, pictures: [])
     	create_described(info[:described_type])
     	@info = @described.infos.build(info)
       authorize @info
