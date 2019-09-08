@@ -14,7 +14,9 @@
 	br
 	= form.label :pictures
 	br
-	= form.file_field :pictures, multiple: true
+	= form.file_field :pictures, multiple: true, direct_upload: true, id: 'pics-input', class: 'custom-file-input'
+	br
+	= image_tag '', class: 'pic placeholder', id: 'pic-preview'
 	br
 	= form.label :ordernumber
 	br
