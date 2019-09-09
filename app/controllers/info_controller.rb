@@ -24,6 +24,10 @@ class InfoController < ApplicationController
     # end
   end
   
+  def direct_upload_pictures
+    Info.find(params[:id]).pictures.attach(params[pictures: []])
+  end
+
   def upload
     uploaded_file = params[:picture]
     File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
