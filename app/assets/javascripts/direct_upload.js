@@ -1,10 +1,39 @@
 // import { CustomUploader } from './custom_uploader.js'
-// alert('hi!');
-// $('input#pics-input').on('change', function(event) {
-//   alert('hellO!');
-//   $("img.placeholder").attr('src',URL.createObjectURL(event.target.files[0]));
-// })
 
+$('input#pics-input').on('change', function(event) {
+  console.log(event.target);
+  var place = document.getElementsByClassName('placeholder')[0];
+  // удаляем старые фотки
+  while (place.firstChild) {
+    place.removeChild(place.firstChild);
+  }
+  //показываем новые
+  // Array.from(event.target.files).forEach( file => {
+  for (var i = 0; i < event.target.files.length; i++) {
+    console.log(event.target.files[i]);
+    
+    // $("img.placeholder").attr('src',URL.createObjectURL(file));
+    var newimg = document.createElement("img");
+    var nediv = document.createElement("div");
+    var newbutton = document.createElement("button");
+    nediv.setAttribute("class", "container");
+    newimg.setAttribute("src", URL.createObjectURL(event.target.files[i]));
+    newimg.setAttribute("id", "image_" + i);
+    newbutton.setAttribute("id", "button" + i);
+    newbutton.setAttribute("class", "btn");
+    newbutton.innerHTML = "del";
+    place.appendChild(nediv);
+    nediv.appendChild(newimg);
+    nediv.appendChild(newbutton);
+    newbutton.addListener('click', function(e) {
+      console.log(e);
+    })
+  }
+})
+
+$('button.btn').on('Click', function(event) {
+  console.log(event);
+})
 // Handle change, e.g. User attaches a file
 const inputs = Array.from(document.querySelectorAll('.custom-file-input'))
 inputs.forEach(input => {
