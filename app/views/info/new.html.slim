@@ -1,3 +1,7 @@
+= javascript_include_tag 'custom_uploader', type: 'module'
+= javascript_include_tag 'direct_upload', type: 'module'
+
+
 = t('hello')
 = form_with model: @info, url:'/products/info' do |form|
 	= form.label :name

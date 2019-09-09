@@ -1,4 +1,4 @@
-import { CustomUploader } from 'custom_uploader'
+import { CustomUploader } from './custom_uploader.js'
 // alert('hi!');
 // $('input#pics-input').on('change', function(event) {
 //   alert('hellO!');

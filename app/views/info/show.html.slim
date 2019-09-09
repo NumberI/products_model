@@ -1,6 +1,7 @@
 = @info.inspect
  / if @info.pictures.attached?
-- @info.pictures.each do |image|
-  = image_tag image
-/ = image_url url_for(@info.pictures.first)
+div
+  - @info.pictures.each do |image|
+    = image_tag image.variant(resize: "200x200")
+  / = image_url url_for(@info.pictures.first)
   

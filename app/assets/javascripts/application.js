@@ -14,3 +14,5 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= stub "custom_uploader.js"
+//= stub "direct_upload.js"
