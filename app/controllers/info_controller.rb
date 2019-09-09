@@ -24,6 +24,13 @@ class InfoController < ApplicationController
     # end
   end
   
+  def upload
+    uploaded_file = params[:picture]
+    File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
+      file.write(uploaded_file.read)
+    end
+  end
+
   private
   def create_described(type)
   	@described = type.classify.constantize.new()
@@ -33,4 +40,6 @@ class InfoController < ApplicationController
   def pundit_user
     current_role
   end
+
+
 end

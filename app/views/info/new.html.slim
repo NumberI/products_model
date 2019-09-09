@@ -1,6 +1,9 @@
 = javascript_include_tag 'custom_uploader', type: 'module'
 = javascript_include_tag 'direct_upload', type: 'module'
 
+/= form_with(url: {action: :upload}, multipart: true) do
+	= label_tag 'pictures'
+	= file_field_tag 'pictures', multiple: true, direct_upload: true, id: 'pics-input', class: 'custom-file-input'
 
 = t('hello')
 = form_with model: @info, url:'/products/info' do |form|
@@ -16,9 +19,9 @@
 	br
 	= select("info", "described_type", ["HowW","HowDo"])
 	br
-	= form.label :pictures
+	= form.label :picture
 	br
-	= form.file_field :pictures, multiple: true, direct_upload: true, id: 'pics-input', class: 'custom-file-input'
+	= form.file_field :picture, multiple: true, direct_upload: true, id: 'pics-input', class: 'custom-file-input'
 	br
 	= image_tag '', class: 'pic placeholder', id: 'pic-preview'
 	br
