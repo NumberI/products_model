@@ -1,3 +1,4 @@
+var k = 1;
 $('input#pics-input').on('change', function(event) {
   var place = document.getElementsByClassName('placeholder')[0];
   // удаляем старые фотки
@@ -6,7 +7,15 @@ $('input#pics-input').on('change', function(event) {
   }
   //показываем новые
   var arr = Array.from(event.target.files);
-  console.log(place);
+  console.log(arr.lenght);
+  if (arr.length > 5){
+    if (k == 1) {alert('Файлов не должно быть больше 5. Удалите лишние!');}
+    k++;
+    document.getElementById("submit").disabled = true; 
+    // subm.setAttribute("disabled","");
+  } else {
+    document.getElementById("submit").disabled = false; 
+  };
   for (var i = 0; i < event.target.files.length; i++) {
     var newimg = document.createElement("img");
     var nediv = document.createElement("div");
@@ -30,6 +39,7 @@ $('input#pics-input').on('change', function(event) {
       }
       console.log(dT.files);
       event.target.files = dT.files;
+      document.getElementById("pics-input").dispatchEvent(new Event('change'));
     })
   }
 })

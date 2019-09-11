@@ -1,9 +1,5 @@
 = javascript_include_tag 'direct_upload', type: 'module'
 
-/= form_with(url: {action: :upload}, multipart: true) do
-	= label_tag 'pictures'
-	= file_field_tag 'pictures', multiple: true, direct_upload: true, id: 'pics-input', class: 'custom-file-input'
-
 = t('hello')
 = form_with model: @info, url:'/products/info' do |form|
 	= form.label :name
@@ -27,5 +23,5 @@
 	= form.file_field :pictures, multiple: true, direct_upload: true, id: 'pics-input'
 	br
 	br
-	= form.submit
+	= form.submit "Create Info", :id => 'submit'
 .placeholder
