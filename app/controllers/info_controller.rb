@@ -2,7 +2,6 @@ class InfoController < ApplicationController
 
   def show
     @info = Info.find(params[:id])
-    @inf = Info.find(9)
   end
 
   def new
@@ -25,17 +24,6 @@ class InfoController < ApplicationController
     # end
   end
   
-  def direct_upload_pictures
-    Info.find(9).pictures.attach(params[pictures: []])
-  end
-
-  def upload
-    uploaded_file = params[:picture]
-    File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
-      file.write(uploaded_file.read)
-    end
-  end
-
   private
   def create_described(type)
   	@described = type.classify.constantize.new()

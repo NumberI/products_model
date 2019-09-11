@@ -1,10 +1,10 @@
 /= javascript_include_tag 'direct_upload', type: 'module'
 
 = @info.inspect
- / if @info.pictures.attached?
-div
-  - @info.pictures.each do |image|
-    = image_tag image.variant(resize: "200x200")
+- if @info.pictures.attached?
+  div
+    - @info.pictures.each do |image|
+      = image_tag image.variant(resize: "200x200")
   
 = image_url url_for(@info.pictures.first)  
 /div
