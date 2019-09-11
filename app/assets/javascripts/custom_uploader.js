@@ -1,4 +1,4 @@
-import { DirectUpload } from "@rails/activestorage"
+// import { DirectUpload } from "@rails/activestorage"
 
 // See DirectUploadController from Rails Active Storage source
 export class CustomUploader {

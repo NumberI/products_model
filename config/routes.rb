@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   end
   get '/' => 'products#new'
   root to: "products#new"
-  patch '/products/info/upload' => 'info#direct_upload_pictures'
+  post '/products/info/upload' => 'info#direct_upload_pictures'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

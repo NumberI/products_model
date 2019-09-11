@@ -2,6 +2,7 @@ class InfoController < ApplicationController
 
   def show
     @info = Info.find(params[:id])
+    @inf = Info.find(9)
   end
 
   def new
@@ -25,7 +26,7 @@ class InfoController < ApplicationController
   end
   
   def direct_upload_pictures
-    Info.find(params[:id]).pictures.attach(params[pictures: []])
+    Info.find(9).pictures.attach(params[pictures: []])
   end
 
   def upload

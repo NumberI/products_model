@@ -1,14 +1,17 @@
-= javascript_include_tag 'direct_upload', type: 'module'
+/= javascript_include_tag 'direct_upload', type: 'module'
 
 = @info.inspect
  / if @info.pictures.attached?
-/div
+div
   - @info.pictures.each do |image|
     = image_tag image.variant(resize: "200x200")
-  / = image_url url_for(@info.pictures.first)
   
-div
+= image_url url_for(@info.pictures.first)  
+/div
   = form_for @info, remote: true, url: products_info_upload_path do |form|
     = form.file_field :pictures, multiple:true,  direct_upload: true, id: 'pics-input'
     br
-.placeholder
+    =form.hidden_field :id, value: @info.id
+    br
+    = form.submit
+/.placeholder

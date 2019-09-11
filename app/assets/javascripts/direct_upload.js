@@ -1,18 +1,13 @@
-// import { CustomUploader } from './custom_uploader.js'
-
 $('input#pics-input').on('change', function(event) {
-  console.log(event.target);
   var place = document.getElementsByClassName('placeholder')[0];
   // удаляем старые фотки
   while (place.firstChild) {
     place.removeChild(place.firstChild);
   }
   //показываем новые
-  // Array.from(event.target.files).forEach( file => {
+  var arr = Array.from(event.target.files);
+  console.log(place);
   for (var i = 0; i < event.target.files.length; i++) {
-    console.log(event.target.files[i]);
-    
-    // $("img.placeholder").attr('src',URL.createObjectURL(file));
     var newimg = document.createElement("img");
     var nediv = document.createElement("div");
     var newbutton = document.createElement("button");
@@ -25,27 +20,18 @@ $('input#pics-input').on('change', function(event) {
     place.appendChild(nediv);
     nediv.appendChild(newimg);
     nediv.appendChild(newbutton);
-    newbutton.addListener('click', function(e) {
-      console.log(e);
+    newbutton.addEventListener('click', function(e) {
+      $(this).parent('div').remove();
+      arr.splice(this.id.slice(-1),1);
+      const dT = new ClipboardEvent('').clipboardData || // Firefox < 62 workaround exploiting https://bugzilla.mozilla.org/show_bug.cgi?id=1422655
+      new DataTransfer(); // specs compliant (as of March 2018 only Chrome)
+      for (var j = 0; j < arr.length; j++) {
+        dT.items.add(arr[j]);
+      }
+      console.log(dT.files);
+      event.target.files = dT.files;
     })
   }
-})
-
-$('button.btn').on('Click', function(event) {
-  console.log(event);
-})
-// Handle change, e.g. User attaches a file
-const inputs = Array.from(document.querySelectorAll('.custom-file-input'))
-inputs.forEach(input => {
-  input.addEventListener('change', event => {
-    Array.from(input.files).forEach( file => {
-      const uploader = new CustomUploader(input, file)
-      uploader.start(file)
-      console.log('dawfwafwf');
-    })
-    // clear the selected files from the input
-    input.value = null
-  })
 })
 
 addEventListener("direct-upload:initialize", event => {

@@ -1,4 +1,3 @@
-= javascript_include_tag 'custom_uploader', type: 'module'
 = javascript_include_tag 'direct_upload', type: 'module'
 
 /= form_with(url: {action: :upload}, multipart: true) do
@@ -19,14 +18,14 @@
 	br
 	= select("info", "described_type", ["HowW","HowDo"])
 	br
-	= form.label :picture
-	br
-	/= form.file_field :picture, multiple: true, direct_upload: true, id: 'pics-input', class: 'custom-file-input'
-	br
-	= image_tag '', class: 'pic placeholder', id: 'pic-preview'
-	br
 	= form.label :ordernumber
 	br
 	= form.text_field :ordernumber
 	br
+	= form.label :pictures
+	br
+	= form.file_field :pictures, multiple: true, direct_upload: true, id: 'pics-input'
+	br
+	br
 	= form.submit
+.placeholder
