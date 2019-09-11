@@ -20,7 +20,7 @@
 	br
 	= form.label :pictures
 	br
-	= form.file_field :pictures, multiple: true, direct_upload: true, id: 'pics-input'
+	= form.file_field :pictures, multiple: true, direct_upload: true, id: 'pics-input', accept: 'image/png, image/jpeg'
 	br
 	br
 	= form.submit "Create Info", :id => 'submit'
