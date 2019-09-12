@@ -5,7 +5,7 @@ ruby '2.5.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
-
+gem 'active_storage_validations'
 gem 'image_processing'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

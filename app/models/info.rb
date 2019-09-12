@@ -21,6 +21,8 @@ class Info < ApplicationRecord
 	validates :name, uniqueness: { case_sensitive: false }
 	validates :name, :description, :ordernumber, presence: true
 
+  validates :pictures, attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'], limit: { min: 1, max: 5 }, size: { less_than: 5000.kilobytes }
+
   def order
     ordernumber
   end
