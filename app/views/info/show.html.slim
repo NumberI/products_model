@@ -1,5 +1,3 @@
-/= javascript_include_tag 'direct_upload', type: 'module'
-
 = @info.inspect
 - if @info.pictures.attached?
   div
@@ -7,4 +5,8 @@
       - if image.variable?
         = link_to image_tag(image.variant(resize: "200x200")), image
       - elsif image.previewable?
-        = link_to image_tag(image.preview(resize: "200x200")), image
+        = link_to image_tag(image.preview(resize: "200x200")), rails_blob_path(image, disposition: :attachment)
+      - elsif image.image?
+        = link_to image_tag(image, width: 200), image
+      - else
+        = link_to image.filename, rails_blob_path(image, disposition: :attachment)

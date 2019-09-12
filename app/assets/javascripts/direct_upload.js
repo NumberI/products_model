@@ -1,18 +1,22 @@
 var k = 1;
 $('input#pics-input').on('change', function(event) {
   var place = document.getElementsByClassName('placeholder')[0];
+  var max_size = parseInt($(this).attr('data-max_size'));
   // удаляем старые фотки
   while (place.firstChild) {
     place.removeChild(place.firstChild);
   }
   //показываем новые
   var arr = Array.from(event.target.files);
-  console.log(arr.lenght);
+  var f_sizes = arr.map(a => a.size);
+  console.log(f_sizes);
   if (arr.length > 5){
     if (k == 1) {alert('Файлов не должно быть больше 5. Удалите лишние!');}
     k++;
     document.getElementById("submit").disabled = true; 
-    // subm.setAttribute("disabled","");
+  } else if (f_sizes.some(greaterSize)){
+    alert('Максимальный размер файлов ' + max_size + ' байт.');
+    document.getElementById("submit").disabled = true;
   } else {
     document.getElementById("submit").disabled = false; 
   };
@@ -43,6 +47,10 @@ $('input#pics-input').on('change', function(event) {
     })
   }
 })
+
+function greaterSize(val){
+  return val > parseInt(document.getElementById("pics-input").getAttribute('data-max_size'));
+}
 
 addEventListener("direct-upload:initialize", event => {
   const { target, detail } = event
