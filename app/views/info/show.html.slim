@@ -4,14 +4,7 @@
 - if @info.pictures.attached?
   div
     - @info.pictures.each do |image|
-      = image_tag image.variant(resize: "200x200")
-  
-= image_url url_for(@info.pictures.first)  
-/div
-  = form_for @info, remote: true, url: products_info_upload_path do |form|
-    = form.file_field :pictures, multiple:true,  direct_upload: true, id: 'pics-input'
-    br
-    =form.hidden_field :id, value: @info.id
-    br
-    = form.submit
-/.placeholder
+      - if image.variable?
+        = link_to image_tag(image.variant(resize: "200x200")), image
+      - elsif image.previewable?
+        = link_to image_tag(image.preview(resize: "200x200")), image
